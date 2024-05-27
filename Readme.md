@@ -118,6 +118,7 @@ The following commands are available:
 | List All Java Source Paths           | java.project.listSourcePaths.command        | lists all the Java source paths recognized by the Java Language Server workspace.                                                                  |
 | Show Build Job Status                | java.show.server.task.status                | shows the Java Language Server job status in Visual Studio Code terminal.                                                                          |
 | Go to Super Implementation           | java.action.navigateToSuperImplementation   | goes to the super implementation for the current selected symbol in editor.                                                                        |
+| Performs Cleanup Actions             | java.action.doCleanup                       | performs cleanup actions.                                                                                                                          |
 
 ## Supported settings
 
@@ -161,6 +162,7 @@ The following coc.nvim settings are supported (checkout `:h coc-configuration` f
   Valid options: ["ignore","warning","error"]
 - `java.configuration.workspaceCacheLimit`: The number of days (if enabled) to keep unused workspace cache data. Beyond this limit, cached workspace data may be removed. Default: `90`
 - `java.format.enabled`: Enable/disable default Java formatter Default: `true`
+- `java.saveActions.cleanup`: Enable/disable cleanup actions on save. Default: `true`
 - `java.saveActions.organizeImports`: Enable/disable auto organize imports on save action Default: `false`
 - `java.import.exclusions`: Configure glob patterns for excluding folders. Use `!` to negate patterns to allow subfolders imports. You have to include a parent directory. The order is important. Default: `["**/node_modules/**","**/.metadata/**","**/archetype-resources/**","**/META-INF/maven/**"]`
 - `java.import.generatesMetadataFilesAtProjectRoot`: Specify whether the project metadata files(.project, .classpath, .factorypath, .settings/) will be generated at the project root. Click [HERE](command:_java.metadataFilesGeneration) to learn how to change the setting to make it take effect. Default: `false`
@@ -233,7 +235,8 @@ The following coc.nvim settings are supported (checkout `:h coc-configuration` f
 - `java.compile.nullAnalysis.nullable`: Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled` Default: `["javax.annotation.Nullable","org.eclipse.jdt.annotation.Nullable","org.springframework.lang.Nullable"]`
 - `java.compile.nullAnalysis.mode`: Specify how to enable the annotation-based null analysis. Default: `"interactive"`
   Valid options: ["disabled","interactive","automatic"]
-- `java.cleanup.actionsOnSave`: The list of clean ups to be run on the current document when it's saved. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does. Default: `[]`
+- `java.cleanup.actionsOnSave`: Deprecated, please use 'java.cleanup.actions' instead. Default: `[]`
+- `java.cleanup.actions`: The list of clean ups to be run on the current document when it's saved or when the cleanup command is issued. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does. Default: `["renameFileToType"]`
 - `java.sharedIndexes.enabled`: [Experimental] Specify whether to share indexes between different workspaces. When set to `auto`, shared indexes will be enabled in Visual Studio Code - Insiders. Default: `"auto"`
   Valid options: ["auto","on","off"]
 - `java.sharedIndexes.location`: Specifies a common index location for all workspaces. See default values as follows: Windows: First use `"$APPDATA\\.jdt\\index"`, or `"~\\.jdt\\index"` if it does not exist macOS: `"~/Library/Caches/.jdt/index"` Linux: First use `"$XDG_CACHE_HOME/.jdt/index"`, or `"~/.cache/.jdt/index"` if it does not exist Default: `""`

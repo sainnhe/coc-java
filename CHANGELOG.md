@@ -1,5 +1,11 @@
 # Change Log
 
+## Unreleased
+
+- Add command `java.action.doCleanup`.
+- Add configuration `java.cleanup.actions`.
+- Add configuration `java.saveActions.cleanup`.
+
 ## 1.15.0 (2023-09-20)
  * performance - Skip generated methods when calculating document symbols.
  * performance - Make the debounce adaptive for the publish diagnostic job.

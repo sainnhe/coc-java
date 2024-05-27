@@ -223,6 +223,10 @@ export namespace GenerateHashCodeEqualsRequest {
   export const type = new RequestType<GenerateHashCodeEqualsParams, WorkspaceEdit, void>('java/generateHashCodeEquals')
 }
 
+export namespace CleanupRequest {
+  export const type = new RequestType<TextDocumentIdentifier, WorkspaceEdit, void>('java/cleanup')
+}
+
 export namespace OrganizeImportsRequest {
   export const type = new RequestType<CodeActionParams, WorkspaceEdit, void>('java/organizeImports')
 }
@@ -448,18 +452,18 @@ export interface UpgradeGradleWrapperInfo {
 }
 
 export interface Member {
-  name: string;
-  typeName: string;
-  parameters: string[];
-  handleIdentifier: string;
+  name: string
+  typeName: string
+  parameters: string[]
+  handleIdentifier: string
 }
 
 export interface CheckExtractInterfaceStatusResponse {
-  members: Member[];
-  subTypeName: string;
-  destinationResponse: MoveDestinationsResponse;
+  members: Member[]
+  subTypeName: string
+  destinationResponse: MoveDestinationsResponse
 }
 
 export namespace CheckExtractInterfaceStatusRequest {
-  export const type = new RequestType<CodeActionParams, CheckExtractInterfaceStatusResponse, void>('java/checkExtractInterfaceStatus');
+  export const type = new RequestType<CodeActionParams, CheckExtractInterfaceStatusResponse, void>('java/checkExtractInterfaceStatus')
 }

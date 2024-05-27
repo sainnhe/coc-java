@@ -332,6 +332,11 @@
           "description": "Enable/disable default Java formatter",
           "scope": "window"
         },
+        "java.saveActions.cleanup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable cleanup actions on save."
+        },
         "java.saveActions.organizeImports": {
           "type": "boolean",
           "default": false,
@@ -942,7 +947,7 @@
         },
         "java.cleanup.actionsOnSave": {
           "type": "array",
-          "markdownDescription": "The list of clean ups to be run on the current document when it's saved. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does.",
+          "deprecationMessage": "Deprecated, please use 'java.cleanup.actions' instead.",
           "items": {
             "type": "string",
             "enum": [
@@ -954,12 +959,39 @@
               "invertEquals",
               "addFinalModifier",
               "instanceofPatternMatch",
+              "lambdaExpressionFromAnonymousClass",
               "lambdaExpression",
               "switchExpression",
               "tryWithResource"
             ]
           },
           "default": [],
+          "scope": "window"
+        },
+        "java.cleanup.actions": {
+          "type": "array",
+          "markdownDescription": "The list of clean ups to be run on the current document when it's saved or when the cleanup command is issued. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "qualifyMembers",
+              "qualifyStaticMembers",
+              "addOverride",
+              "addDeprecated",
+              "stringConcatToTextBlock",
+              "invertEquals",
+              "addFinalModifier",
+              "instanceofPatternMatch",
+              "lambdaExpressionFromAnonymousClass",
+              "lambdaExpression",
+              "switchExpression",
+              "tryWithResource",
+              "renameFileToType"
+            ]
+          },
+          "default": [
+            "renameFileToType"
+          ],
           "scope": "window"
         },
         "java.sharedIndexes.enabled": {
@@ -1119,6 +1151,11 @@
       {
         "command": "java.clean.sharedIndexes",
         "title": "Clean Shared Indexes",
+        "category": "Java"
+      },
+      {
+        "command": "java.action.doCleanup",
+        "title": "Performs Cleanup Actions",
         "category": "Java"
       }
     ]
